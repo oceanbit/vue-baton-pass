@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import {onMounted, onUnmounted, ref} from "vue";
 
-
 const bc = new BroadcastChannel("TEST");
 
 const getCurrentWidgets = () => Number(localStorage.getItem('currentWidgets')) || 0;
@@ -14,11 +13,9 @@ const isBaton = ref(false);
 const widgetID = ref(0);
 
 let cleanupTimer: any = undefined;
+let timer: any = undefined;
 
 onMounted(() => {
-
-  let timer: any = undefined;
-
   bc.postMessage("CONNECTED")
   const currentWidgetCount = getCurrentWidgets() + 1;
   setCurrentWidgets('' + currentWidgetCount);
@@ -57,11 +54,12 @@ function cleanup() {
   if (currentWidgetCount === 0) {
     setWidgetID('0');
   }
+  clearTimeout(cleanupTimer);
+  clearTimeout(timer);
 }
 
 onUnmounted(() => {
   cleanup();
-  clearTimeout(cleanupTimer);
 })
 
 window.onbeforeunload = () => {
