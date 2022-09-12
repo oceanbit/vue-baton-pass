@@ -9,7 +9,7 @@ const setCurrentWidgets = (val: string) => localStorage.setItem('currentWidgets'
 const getWidgetID = () => Number(localStorage.getItem('widgetCount')) || 0;
 const setWidgetID = (val: string) => localStorage.setItem('widgetCount', val);
 
-const isBatton = ref(false);
+const isBaton = ref(false);
 
 const widgetID = ref(0);
 
@@ -27,7 +27,7 @@ onMounted(() => {
 
   function takeOwnerShip() {
     timer = setTimeout(() => {
-      isBatton.value = true;
+      isBaton.value = true;
       bc.postMessage("OWNERSHIP_TAKEN")
     }, widgetID.value * 100);
   }
@@ -70,5 +70,5 @@ window.onbeforeunload = () => {
 </script>
 
 <template>
-  <p>{{ isBatton ? "I am the batton" : "I am not the batton" }}</p>
+  <p>{{ isBaton ? "I am the baton" : "I am not the baton" }}</p>
 </template>
