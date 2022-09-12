@@ -12,7 +12,6 @@ export const useBatonPass = () => {
 
     const widgetID = ref(0);
 
-    let cleanupTimer: any = undefined;
     let timer: any = undefined;
 
     onMounted(() => {
@@ -54,7 +53,6 @@ export const useBatonPass = () => {
         if (currentWidgetCount === 0) {
             setWidgetID('0');
         }
-        clearTimeout(cleanupTimer);
         clearTimeout(timer);
     }
 
