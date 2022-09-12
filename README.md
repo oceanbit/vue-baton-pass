@@ -1,16 +1,12 @@
-# Vue 3 + TypeScript + Vite
+# Vue Baton Passing Prototype
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a POC of a `useBatonPass` custom composition in Vue. The idea is that, given multiple tabs of the same app,
+you only have a single tab that's marked as "having the baton".
 
-## Recommended IDE Setup
+![Three Chrome Windows, with one being marked as "I am the baton" while the others show "I am not the baton". When the baton window is closed, another one takes its place](./assets/baton_demo.gif)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This is useful when wanting to create cross-tab communication between apps and having a single tab act as the "conductor"
+of the other tabs.
 
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+An example of where this is useful is when you want to listen to websockets in multiple tabs, but only want to have
+one connection to the server.
