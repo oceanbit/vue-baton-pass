@@ -26,7 +26,7 @@ export const useBatonPass = () => {
             timer = setTimeout(() => {
                 isBaton.value = true;
                 bc.postMessage("OWNERSHIP_TAKEN")
-            }, widgetID.value * 100);
+            }, widgetID.value);
         }
 
         // First widget
